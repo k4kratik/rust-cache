@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
 
-    name: Test buildjet provider on ${{ matrix.os }}
+    name: s3 with ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     env:
