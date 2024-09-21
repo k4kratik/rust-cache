@@ -20,12 +20,19 @@ jobs:
 
       - run: rustup toolchain install stable --profile minimal --no-self-update
 
-      - uses: ./
+      - uses: whywaita/actions-cache-s3@v2
         with:
-          workspaces: tests
-          cache-provider: s3
-          key: my_key
-          path: /
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          aws-s3-bucket: ${{secrets.AWS_S3_BUCKET_NAME}}
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: us-east-1
 
       - run: |
           cargo check
