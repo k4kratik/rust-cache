@@ -25,6 +25,7 @@ jobs:
           workspaces: tests
           cache-provider: s3
           key: my_key
+          path: /
 
       - run: |
           cargo check
