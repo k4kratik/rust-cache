@@ -17,5 +17,6 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true
   },
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "include": ["src/**/*.ts"]
 }
